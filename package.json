@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --mode development --open",
     "start": "node server.js",
-    "build": "webpack --mode production"
+    "heroku-postbuild": "webpack -p"
   },
   "dependencies": {
     "express": "^4.16.4",
