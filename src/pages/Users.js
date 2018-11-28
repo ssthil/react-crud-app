@@ -100,7 +100,7 @@ class Users extends Component {
               <div className="card-header">User Lists</div> */}
               {this.state.users.length > 0 ? (
                 this.state.users.map(user => (
-                  <UserList key={ user.id } name={ user.name } desc={ user.desc } groupName="group name"/>
+                  <UserList key={ user.id } name={ user.name } desc={ user.desc } />
                 ))
               ) : (
                 <div className="alert alert-danger">No Records!</div>
