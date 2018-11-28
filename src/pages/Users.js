@@ -24,7 +24,7 @@ class Users extends Component {
   componentDidMount() {
     const users = this.getUsers();
     const groups = this.getGroups();
-    // const list = this.getUsersAndgroup()
+    const userGroup = this.getUsersAndgroup()
     this.setState({ users, groups });
 
   }
@@ -56,21 +56,31 @@ class Users extends Component {
   }
 
   getUsersAndgroup() {
-    var List = "";
-    users.forEach(function(user){
+    var userGroup = [];
+
+    users.forEach(function(user) {
       function checkGroupName(val,key) {
-        if(val){return user.group_id == val.id;}
+        if(val){return user.group_id == val.group_id;}
       }
-      var grpIndex = groups.findIndex(checkGroupName);
-      List =  List + value.name+ " " + groups[grpIndex].name+"\n";
+
+      var groupIndex = groups.findIndex(checkGroupName);
+
+      userGroup.push({
+        userName: user.name,
+        groupName: groups[groupIndex].name
+      });
+
+      userGroup
+      // console.log(`${user.name} - ${groups[groupIndex].name}`)
     });
 
-    console.log(List)
+    console.log("List: ",userGroup)
   }
 
   render() {
     // const { users, groups } = this.state;
     const { name, groups } = this.props;
+
     return (
       <div className="container-fluid">
         <div className="row user-list">
@@ -90,7 +100,7 @@ class Users extends Component {
               <div className="card-header">User Lists</div> */}
               {this.state.users.length > 0 ? (
                 this.state.users.map(user => (
-                  <UserList key={ user.id } name={ user.name } desc={ user.desc }/>
+                  <UserList key={ user.id } name={ user.name } desc={ user.desc } groupName="group name"/>
                 ))
               ) : (
                 <div className="alert alert-danger">No Records!</div>

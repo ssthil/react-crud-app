@@ -43,7 +43,9 @@
 .group-name {
   font-size: 13px;
   font-weight: 600;
-  color: #393570;
+  color: #fff;
+  padding: 5px 10px;
+  background: #729bd0;
 }
 
 .user-list .card {

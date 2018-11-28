@@ -35,7 +35,7 @@ class UserList extends Component {
       </li>
 */
   render() {
-    const { name, desc } = this.props;
+    const { name, desc, groupName } = this.props;
 
     return (
       <div className="col-lg-4 col-md-4 col-sm-6">
@@ -45,7 +45,7 @@ class UserList extends Component {
             <div className="content-section">
               <h5>{name.capitalize()}</h5>
               <p>{desc}</p>
-              <div className="group-name">Group name</div>
+              <div className="group-name badge">{ groupName.capitalize() }</div>
             </div>
             <button className="btn btn-danger btn-sm btn-custom">Delete</button>
           </div>
