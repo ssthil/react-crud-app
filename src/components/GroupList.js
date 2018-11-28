@@ -5,10 +5,10 @@ class GroupList extends Component {
     super(props);
   }
   render() {
-    const { name } = this.props;
+    const { groupName } = this.props;
     return (
       <li className="list-group-item">
-        {name.capitalize()}
+        {groupName.capitalize()}
         <button className="btn btn-danger btn-sm float-right">Delete</button>
       </li>
     );

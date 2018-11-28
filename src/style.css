@@ -55,3 +55,7 @@
 .card-header.bg-custom{
   background: #228598;
 }
+
+.navbar-nav .nav-item a:hover, .nav-item a.selected{
+  color:#f8d01d !important;
+}

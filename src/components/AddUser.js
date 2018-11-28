@@ -50,7 +50,7 @@ class AddUser extends Component {
               <option
                 ref={groupInput => (this.groupInput = groupInput)}
                 value={group.group_id}
-                key={group.group_id}
+                key={group.name}
               >
                 {group.name.capitalize()}
               </option>

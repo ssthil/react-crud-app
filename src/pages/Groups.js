@@ -3,29 +3,37 @@ import React, { Component } from "react";
 import GroupList from "../components/GroupList";
 import AddGroup from "../components/AddGroup";
 
+/** data */
+import users from "../data/users_data.json";
 import groups from "../data/groups_data.json";
 
+localStorage.setItem("users", JSON.stringify(users));
 localStorage.setItem("groups", JSON.stringify(groups));
 
 class Groups extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      groups: JSON.parse(localStorage.getItem("groups"))
+      users: JSON.parse(localStorage.getItem("users")),
+      groups: JSON.parse(localStorage.getItem("groups")),
     };
 
     this.addGroup = this.addGroup.bind(this);
   }
 
   componentDidMount() {
+    const users = this.getUsers();
     const groups = this.getGroups();
-    this.setState({ groups });
+    this.setState({ users, groups });
+  }
+  getUsers() {
+    return this.state.users;
   }
   getGroups() {
     return this.state.groups;
   }
   /** add group */
-  addGroup(name) {
+  addGroup(name, userName) {
     const groups = this.getGroups();
     const newGroup = {
       group_id: Math.max(...groups.map(group => group.group_id)) + 1, //groups.length + 1,
@@ -47,10 +55,10 @@ class Groups extends Component {
         <div className="row user-list">
           <div className="col-lg-3 col-md-4 col-sm-12">
             <div className="card">
-              <div className="card-header bg-custom"> Add User </div>
+              <div className="card-header bg-custom"> Add Goup </div>
               <div className="card-body">
                 <ul className="list-group list-group-flush">
-                  <AddGroup addGroup={this.addGroup} />
+                  <AddGroup users={this.state.users} addGroup={this.addGroup} />
                 </ul>
               </div>
             </div>
@@ -60,7 +68,7 @@ class Groups extends Component {
               <div className="card-header">Group Lists</div>
               {this.state.groups.length > 0 ? (
                 this.state.groups.map(group => (
-                  <GroupList key={group.group_id} name={group.name} />
+                  <GroupList key={group.group_id} groupName={group.name}/>
                 ))
               ) : (
                 <div className="alert alert-danger">No Records!</div>
