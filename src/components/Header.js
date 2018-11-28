@@ -14,12 +14,12 @@ const Header = () => (
         <ul className="navbar-nav">
           <li className="nav-item">
             <NavLink exact to="/users" className="nav-link" activeClassName="selected">
-              Users <span className="sr-only">(current)</span>
+              USERS <span className="sr-only">(current)</span>
             </NavLink>
           </li>
           <li className="nav-item">
             <NavLink to="/groups" className="nav-link" activeClassName="selected">
-              Groups
+              GROUPS
             </NavLink>
           </li>
         </ul>
