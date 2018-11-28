@@ -1,0 +1,55 @@
+.row+.row {
+    margin-top: 1rem;
+}
+
+.action-section {
+    display: flex;
+    justify-content: space-around;
+}
+
+.bg-custom {
+    background: #224b79;
+    color: #fff;
+    margin: 0 0 5px 0;
+}
+
+.card-body {
+    padding: .75rem;
+    /* position: relative; */
+    min-height: 175px;
+}
+
+.card-body img {
+    float: left;
+    margin-right: 10px;
+}
+
+.card-body p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 13px;
+    color: #808080;
+}
+
+.btn-custom {
+    /* position: absolute;
+  bottom: 12px;
+  right: 12px; */
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-top: 5px;
+}
+
+.group-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #393570;
+}
+
+.user-list .card {
+  margin-top: 25px;
+}
+
+.card-header.bg-custom{
+  background: #228598;
+}

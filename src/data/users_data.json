@@ -1,0 +1,20 @@
+[
+  {
+     "id": 1,
+     "name": "senthil",
+     "desc": "Lorem ipsum dolor sit amet, an modo deserunt per, ut vitae urbanitas consectetuer sed",
+     "group_id": 2
+  },
+  {
+     "id": 2,
+     "name": "sabari",
+     "desc": "Lorem ipsum dolor sit amet, an modo deserunt per, ut vitae urbanitas consectetuer sed",
+     "group_id": 1
+  },
+  {
+     "id": 3,
+     "name": "shibu",
+     "desc": "Lorem ipsum dolor sit amet, an modo deserunt per, ut vitae urbanitas consectetuer sed",
+     "group_id": 2
+  }
+]
