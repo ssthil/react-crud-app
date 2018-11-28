@@ -1,10 +1,18 @@
-const HtmlWebPackPlugin = require('html-webpack-plugin');
-const htmlPlugin = new HtmlWebPackPlugin({
-  template:"./src/index.html",
-  filename: "./index.html"
-});
+// const HtmlWebPackPlugin = require('html-webpack-plugin');
+// const htmlPlugin = new HtmlWebPackPlugin({
+//   template:"./src/index.html",
+//   filename: "./index.html"
+// });
 
 module.exports = {
+  entry: [
+    './src/index.js'
+  ],
+  output: {
+    path: __dirname,
+    publicPath: '/',
+    filename: 'bundle.js'
+  },
   module: {
     rules: [
       {
@@ -19,6 +27,6 @@ module.exports = {
         use:["style-loader", "css-loader"]
       }
     ]
-  },
-  plugins: [htmlPlugin]
+  }
+  // plugins: [htmlPlugin]
 };
