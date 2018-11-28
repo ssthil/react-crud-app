@@ -1,18 +1,19 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 /** local component */
 // import TableBody from "../components/TableBody";
 
 class UserList extends Component {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+    // super(props);
     // this.onUserSubmit = this.onUserSubmit.bind(this);
     // this.editUser = this.editUser.bind(this);
     // this.deleteUser = this.deleteUser.bind(this);
-  }
+  // }
 
   /*onUserSubmit(event) {
     event.preventDefault();
-    console.log(this.nameInput.value, this.groupInput.value);
+    // console.log(this.nameInput.value, this.groupInput.value);
     this.props.addUser(this.nameInput.value, this.groupInput.value);
 
     this.nameInput.value = "";
@@ -20,7 +21,7 @@ class UserList extends Component {
   }
 
   editUser() {
-    console.log("edit");
+    // console.log("edit");
   }
 
   deleteUser() {
@@ -54,4 +55,8 @@ class UserList extends Component {
   }
 }
 
+UserList.propTypes = {
+  name: PropTypes.string,
+  desc: PropTypes.string
+};
 export default UserList;

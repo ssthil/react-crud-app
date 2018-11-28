@@ -1,0 +1,22 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "plugins": ["react"],
+  "rules": {
+    "no-undef": [1],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "semi": ["error", "always"],
+    "comma-dangle": ["warn", "never"],
+    "no-useless-constructor": ["error"]
+  },
+  "globals": {
+    "localStorage": true,
+    "document": true
+  }
+}

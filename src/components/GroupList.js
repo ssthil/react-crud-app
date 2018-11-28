@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React, {  PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
-class GroupList extends Component {
-  constructor(props) {
-    super(props);
-  }
+class GroupList extends PureComponent {
+
   render() {
     const { groupName } = this.props;
     return (
@@ -14,5 +13,9 @@ class GroupList extends Component {
     );
   }
 }
+
+GroupList.propTypes = {
+  groupName: PropTypes.string
+};
 
 export default GroupList;

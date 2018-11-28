@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import { HashRouter } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { HashRouter } from 'react-router-dom';
 /** local component */
-import App from "./components/App";
+import App from './components/App';
 /** css */
-import "./style.css";
+import './style.css';
 
-import "./utils";
+import './utils';
 
 ReactDOM.render(
   <HashRouter>
     <App />
   </HashRouter>,
-  document.getElementById("app")
+  document.getElementById('app')
 );

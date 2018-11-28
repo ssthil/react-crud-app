@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const tableTitle = ["Name", "Role", "Group", "Action"];
+const tableTitle = ['Name', 'Role', 'Group', 'Action'];
 
 const TableHeader = () => (
   <thead>

@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AddGroup extends Component {
   constructor(props) {
@@ -8,14 +9,14 @@ class AddGroup extends Component {
 
   onSubmit(event) {
     event.preventDefault();
-    if (this.groupInput.value === "") {
-      console.log("Please ender group name");
+    if (this.groupInput.value === '') {
+      // console.log('Please ender group name');
     } else {
       // console.log(this.groupInput.value);
       this.props.addGroup(this.groupInput.value, this.userInput.value);
     }
 
-    this.groupInput.value = "";
+    this.groupInput.value = '';
   }
 
   render() {
@@ -54,5 +55,10 @@ class AddGroup extends Component {
     );
   }
 }
+
+AddGroup.propTypes = {
+  addGroup: PropTypes.func,
+  users: PropTypes.array
+};
 
 export default AddGroup;

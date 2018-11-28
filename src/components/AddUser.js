@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AddUser extends Component {
   constructor(props) {
@@ -13,10 +14,10 @@ class AddUser extends Component {
   onSubmit(event) {
     event.preventDefault();
     // console.log(this.nameInput.value, this.groupName.value);
-    if(this.nameInput.value !== "") {
+    if(this.nameInput.value !== '') {
       this.props.addUser(this.nameInput.value, this.groupName.value);
     }
-    this.nameInput.value = "";
+    this.nameInput.value = '';
   }
 
   // handleChange(event) {
@@ -89,5 +90,10 @@ class AddUser extends Component {
     );
   }
 }
+
+AddUser.propTypes = {
+  addUser: PropTypes.func,
+  groups: PropTypes.array
+};
 
 export default AddUser;

@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const TableBody = ({ id, name, role, group, editUser, deleteUser }) => (
   <tbody>
@@ -18,5 +19,14 @@ const TableBody = ({ id, name, role, group, editUser, deleteUser }) => (
     </tr>
   </tbody>
 );
+
+TableBody.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  role: PropTypes.string,
+  group: PropTypes.string,
+  editUser: PropTypes.func,
+  deleteUser: PropTypes.func
+};
 
 export default TableBody;

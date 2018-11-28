@@ -1,21 +1,22 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+
 /** local components */
-import GroupList from "../components/GroupList";
-import AddGroup from "../components/AddGroup";
+import GroupList from '../components/GroupList';
+import AddGroup from '../components/AddGroup';
 
 /** data */
-import users from "../data/users_data.json";
-import groups from "../data/groups_data.json";
+import users from '../data/users_data.json';
+import groups from '../data/groups_data.json';
 
-localStorage.setItem("users", JSON.stringify(users));
-localStorage.setItem("groups", JSON.stringify(groups));
+localStorage.setItem('users', JSON.stringify(users));
+localStorage.setItem('groups', JSON.stringify(groups));
 
 class Groups extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: JSON.parse(localStorage.getItem("users")),
-      groups: JSON.parse(localStorage.getItem("groups")),
+      users: JSON.parse(localStorage.getItem('users')),
+      groups: JSON.parse(localStorage.getItem('groups'))
     };
 
     this.addGroup = this.addGroup.bind(this);
@@ -33,7 +34,7 @@ class Groups extends Component {
     return this.state.groups;
   }
   /** add group */
-  addGroup(name, userName) {
+  addGroup(name) {
     const groups = this.getGroups();
     const newGroup = {
       group_id: Math.max(...groups.map(group => group.group_id)) + 1, //groups.length + 1,
@@ -44,7 +45,7 @@ class Groups extends Component {
     this.setState({
       groups
     });
-    console.log(groups);
+    // console.log(groups);
   }
 
   render() {

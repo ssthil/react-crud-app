@@ -1,18 +1,18 @@
-import React, { Component, Fragment } from "react";
-import ReactDOM from "react-dom";
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 /** local components */
-import TableHeader from "./components/TableHeader";
-// import UserList from "./pages/UserList";
-// import AddUser from "./components/AddUser";
-import GroupList from "./pages/GroupList";
-import AddGroup from "./components/AddGroup";
+// import TableHeader from './components/TableHeader';
+import UserList from '../pages/UserList';
+import AddUser from '../components/AddUser';
+import GroupList from './pages/GroupList';
+import AddGroup from './components/AddGroup';
 /** css */
-import "./style.css";
+import './style.css';
 /** data */
 // import users from "./data/users_data.json";
 // import groups from "./data/groups_data.json";
 /** utils */
-import "./utils";
+import './utils';
 
 /*
 const users = [
@@ -31,14 +31,14 @@ const users = [
 ];
 */
 // localStorage.setItem("users", JSON.stringify(users));
-localStorage.setItem("groups", JSON.stringify(groups));
+// localStorage.setItem('groups', JSON.stringify(groups));
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: JSON.parse(localStorage.getItem("users")),
-      groups: JSON.parse(localStorage.getItem("groups"))
+      users: JSON.parse(localStorage.getItem('users')),
+      groups: JSON.parse(localStorage.getItem('groups'))
     };
 
     this.addUser = this.addUser.bind(this);
@@ -74,15 +74,15 @@ class App extends Component {
       users
     });
 
-    console.log(users);
+    // console.log(users);
   }
   /** user and group map */
-  userAndGroup() {
-    const users = this.getUsers();
-    const groups = this.getGroups();
+  // userAndGroup() {
+  //   const users = this.getUsers();
+  //   const groups = this.getGroups();
 
-    const usergroup = [];
-  }
+  //   const usergroup = [];
+  // }
   /** delete */
   deleteUser(name) {
     const users = this.getUsers();
@@ -90,7 +90,7 @@ class App extends Component {
       return user.name !== name;
     });
 
-    console.log(filteredUsers);
+    // console.log(filteredUsers);
 
     this.setState({ users: filteredUsers });
   }
@@ -106,13 +106,13 @@ class App extends Component {
     this.setState({
       groups
     });
-    console.log(groups);
+    // console.log(groups);
   }
 
   loadData() {
-    localStorage.setItem("users", JSON.stringify(data.users));
+    // localStorage.setItem('users', JSON.stringify(data.users));
     this.setState({
-      users: JSON.parse(localStorage.getItem("users"))
+      users: JSON.parse(localStorage.getItem('users'))
     });
   }
 
@@ -248,4 +248,4 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById('app'));

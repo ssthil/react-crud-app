@@ -1,21 +1,22 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 /** local components */
-import UserList from "../components/UserList";
-import AddUser from "../components/AddUser";
+import UserList from '../components/UserList';
+import AddUser from '../components/AddUser';
 /** data */
-import users from "../data/users_data.json";
-import groups from "../data/groups_data.json";
+import users from '../data/users_data.json';
+import groups from '../data/groups_data.json';
 
-localStorage.setItem("users", JSON.stringify(users));
-localStorage.setItem("groups", JSON.stringify(groups));
+localStorage.setItem('users', JSON.stringify(users));
+localStorage.setItem('groups', JSON.stringify(groups));
 
 class Users extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: JSON.parse(localStorage.getItem("users")),
-      groups: JSON.parse(localStorage.getItem("groups")),
-      desc: "Lorem ipsum dolor sit amet, an modo deserunt per, ut vitae urbanitas consectetuer sed"
+      users: JSON.parse(localStorage.getItem('users')),
+      groups: JSON.parse(localStorage.getItem('groups')),
+      desc: 'Lorem ipsum dolor sit amet, an modo deserunt per, ut vitae urbanitas consectetuer sed'
     };
 
     this.addUser = this.addUser.bind(this);
@@ -24,7 +25,7 @@ class Users extends Component {
   componentDidMount() {
     const users = this.getUsers();
     const groups = this.getGroups();
-    const userGroup = this.getUsersAndgroup()
+    // const userGroup = this.getUsersAndgroup();
     this.setState({ users, groups });
 
   }
@@ -59,7 +60,7 @@ class Users extends Component {
     var userGroup = [];
 
     users.forEach(function(user) {
-      function checkGroupName(val,key) {
+      function checkGroupName(val) {
         if(val){return user.group_id == val.group_id;}
       }
 
@@ -70,16 +71,16 @@ class Users extends Component {
         groupName: groups[groupIndex].name
       });
 
-      userGroup
+      userGroup;
       // console.log(`${user.name} - ${groups[groupIndex].name}`)
     });
 
-    console.log("List: ",userGroup)
+    // console.log('List: ',userGroup);
   }
 
   render() {
     // const { users, groups } = this.state;
-    const { name, groups } = this.props;
+    // const { name, groups } = this.props;
 
     return (
       <div className="container-fluid">
@@ -114,5 +115,9 @@ class Users extends Component {
   }
 }
 
+Users.propTypes = {
+  name: PropTypes.string,
+  groups: PropTypes.array
+};
 
 export default Users;
