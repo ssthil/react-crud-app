@@ -48,7 +48,7 @@ class Users extends Component {
       group_id: Number(group_id)
     };
     users.push(newUser);
-
+    localStorage.setItem('users', JSON.stringify(users));
     this.setState({
       users
     });

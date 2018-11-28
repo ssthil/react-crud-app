@@ -26,6 +26,8 @@ class Groups extends Component {
     const users = this.getUsers();
     const groups = this.getGroups();
     this.setState({ users, groups });
+
+    // console.log(groups);
   }
   getUsers() {
     return this.state.users;
@@ -42,6 +44,7 @@ class Groups extends Component {
     };
     groups.push(newGroup);
     // this.setState({  });
+    localStorage.setItem('groups', JSON.stringify(groups));
     this.setState({
       groups
     });
