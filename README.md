@@ -1,16 +1,16 @@
 
 # CRUD app using React and Bootstrap 4
 
-This react app with webpack 4 and latest babel config. This is a very basic responsive carousel app using React.
+This CRUD app with webpack 4, bootstrap 4 and latest babel config. This is a very basic responsive CRUD app using React.
 
 ## Project description
-Used stacks are ```React + webpack 4 +  API(pixabay) + media query```
+Used stacks are ```React + webpack 4 +  Bootstrap 4``
 
 ### Step 1
 Make a new project
 
 ```
-mkdir react-responsive-carousel && cd $_ && yarn init -y
+mkdir react-crud-app && cd $_ && yarn init -y
 ```
 
 #### Setting Up React and Babel
