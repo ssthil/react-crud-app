@@ -8,6 +8,7 @@ class GroupList extends PureComponent {
     return (
       <li className="list-group-item">
         {groupName.capitalize()}
+        {/*<span className="badge badge-primary badge-custom">{userName.capitalize()}</span>*/}
         <button className="btn btn-danger btn-sm float-right">Delete</button>
       </li>
     );
@@ -15,7 +16,8 @@ class GroupList extends PureComponent {
 }
 
 GroupList.propTypes = {
-  groupName: PropTypes.string
+  groupName: PropTypes.string,
+  userName: PropTypes.string
 };
 
 export default GroupList;

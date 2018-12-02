@@ -3,13 +3,7 @@ import React, { Component } from 'react';
 /** local components */
 import GroupList from '../components/GroupList';
 import AddGroup from '../components/AddGroup';
-
-/** data */
-import users from '../data/users_data.json';
-import groups from '../data/groups_data.json';
-
-localStorage.setItem('users', JSON.stringify(users));
-localStorage.setItem('groups', JSON.stringify(groups));
+import FormHeader from '../components/sharedComponents/FormHeader';
 
 class Groups extends Component {
   constructor(props) {
@@ -22,13 +16,6 @@ class Groups extends Component {
     this.addGroup = this.addGroup.bind(this);
   }
 
-  componentDidMount() {
-    const users = this.getUsers();
-    const groups = this.getGroups();
-    this.setState({ users, groups });
-
-    // console.log(groups);
-  }
   getUsers() {
     return this.state.users;
   }
@@ -43,43 +30,58 @@ class Groups extends Component {
       name
     };
     groups.push(newGroup);
-    // this.setState({  });
     localStorage.setItem('groups', JSON.stringify(groups));
     this.setState({
       groups
     });
-    // console.log(groups);
   }
+  /*
+  getUsersAndgroup() {
+    const users = this.getUsers();
+    var userGroup = [],
+      userName = [];
+    var groupName = null;
 
+    users.forEach(function(user) {
+      function checkGroupName(val) {
+        if (val) {
+          return user.group_id == val.group_id;
+        }
+      }
+      var groupIndex = groups.findIndex(checkGroupName);
+
+      groupName = groups[groupIndex].name;
+      userName.push(user.name);
+      userGroup.push({
+        groupName: groupName,
+        userName: userName
+      });
+    });
+    localStorage.setItem('userGroup', JSON.stringify(userGroup));
+    this.setState({
+      userGroup
+    });
+  }
+*/
   render() {
-    // const { users, groups } = this.state;
-    // const { name, groups } = this.props;
     return (
       <div className="container-fluid">
-        <div className="row user-list">
+        <div className="row">
           <div className="col-lg-3 col-md-4 col-sm-12">
-            <div className="card">
-              <div className="card-header bg-custom"> Add Goup </div>
-              <div className="card-body">
-                <ul className="list-group list-group-flush">
-                  <AddGroup users={this.state.users} addGroup={this.addGroup} />
-                </ul>
-              </div>
-            </div>
+            <AddGroup addGroup={this.addGroup} />
           </div>
           <div className="col-lg-9 col-md-8 col-sm-12">
             <div className="card">
-              <div className="card-header">Group Lists</div>
-              {this.state.groups.length > 0 ? (
-                this.state.groups.map(group => (
-                  <GroupList key={group.group_id} groupName={group.name}/>
+              <FormHeader displayText="Goup Lists" className="card-header" />
+              {this.state.groups ? (
+                this.state.groups.map((group, index) => (
+                  <GroupList key={index} groupName={group.name} />
                 ))
               ) : (
                 <div className="alert alert-danger">No Records!</div>
               )}
             </div>
           </div>
-          {/*</div> */}
         </div>
       </div>
     );

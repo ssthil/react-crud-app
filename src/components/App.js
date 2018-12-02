@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import Header from '../components/Header';
 import Users from '../pages/Users';
 import Groups from '../pages/Groups';
+import GroupUsers from '../pages/GroupUsers';
 
 const App = () => (
   <Fragment>
@@ -12,6 +13,7 @@ const App = () => (
       <Route exact path="/" component={ Users } />
       <Route path="/users" component={ Users } />
       <Route path="/groups" component={ Groups } />
+      <Route path="/assigned_users" component={ GroupUsers } />
     </Switch>
   </Fragment>
 );

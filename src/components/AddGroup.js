@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+/** local component */
+import Button from '../components/sharedComponents/Button';
+import FormHeader from '../components/sharedComponents/FormHeader';
 
 class AddGroup extends Component {
   constructor(props) {
@@ -13,45 +16,39 @@ class AddGroup extends Component {
       // console.log('Please ender group name');
     } else {
       // console.log(this.groupInput.value);
-      this.props.addGroup(this.groupInput.value, this.userInput.value);
+      this.props.addGroup(this.groupInput.value);
     }
-
     this.groupInput.value = '';
   }
 
   render() {
-    const { users } = this.props;
+    // const { users } = this.props;
     return (
-      <form onSubmit={this.onSubmit}>
-        <div className="form-group">
-          <input
-            placeholder="group name"
-            ref={groupInput => (this.groupInput = groupInput)}
-            className="form-control"
+      <Fragment>
+        <div className="card">
+          <FormHeader
+            displayText="Add Goup"
+            className="card-header bg-primary"
           />
+          <div className="card-body">
+            <ul className="list-group list-group-flush">
+              <form onSubmit={this.onSubmit}>
+                <div className="form-group">
+                  <input
+                    placeholder="group name"
+                    ref={groupInput => (this.groupInput = groupInput)}
+                    className="form-control"
+                  />
+                </div>
+                <Button
+                  displayText="Add Group"
+                  className="btn btn-primary btn-sm"
+                />
+              </form>
+            </ul>
+          </div>
         </div>
-        <div className="form-group">
-        <select
-          className="form-control"
-          // onChange={this.handleChange}
-          // value={this.state.value}
-          ref={select => this.userInput = select}
-          name="userInput"
-        >
-          {users.map(user => (
-            <option
-              ref={userInput => (this.userInput = userInput)}
-              value={user.group_id}
-              key={user.id}
-            >
-              {user.name.capitalize()}
-            </option>
-          ))}
-        </select>
-      </div>
-
-        <button className="btn btn-primary btn-sm">Add Group</button>
-      </form>
+      </Fragment>
     );
   }
 }

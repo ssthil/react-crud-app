@@ -1,3 +1,6 @@
+.margin-right-sm {
+  margin-right: 30px;
+}
 .row+.row {
     margin-top: 1rem;
 }
@@ -13,7 +16,7 @@
     margin: 0 0 5px 0;
 }
 
-.card-body {
+.user-list .card-body {
     padding: .75rem;
     /* position: relative; */
     min-height: 175px;
@@ -48,7 +51,7 @@
   background: #729bd0;
 }
 
-.user-list .card {
+.card {
   margin-top: 25px;
 }
 
@@ -58,4 +61,27 @@
 
 .navbar-nav .nav-item a:hover, .nav-item a.selected{
   color:#f8d01d !important;
+}
+
+.badge-custom {
+  padding: .5em .7em;
+  border-radius: .15rem;
+  margin-left: 20px;
+}
+
+/** */
+.badge-custom {
+  color: #fff;
+  background-color: #17a2b8;
+  padding: 5px 2px 5px 12px;
+  margin: 0 5px;
+}
+
+.badge-custom span {
+  margin: 0 0 0 10px;
+  color: red;
+  background: #ffffff;
+  padding: 2px 5px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
 }

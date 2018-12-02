@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 
 class UserList extends Component {
   // constructor(props) {
-    // super(props);
-    // this.onUserSubmit = this.onUserSubmit.bind(this);
-    // this.editUser = this.editUser.bind(this);
-    // this.deleteUser = this.deleteUser.bind(this);
+  //   super(props);
+  //   // this.onUserSubmit = this.onUserSubmit.bind(this);
+  //   // this.editUser = this.editUser.bind(this);
+  //   this.deleteUser = this.deleteUser.bind(this);
   // }
 
   /*onUserSubmit(event) {
@@ -23,20 +23,20 @@ class UserList extends Component {
   editUser() {
     // console.log("edit");
   }
-
-  deleteUser() {
-    const { deleteUser, name } = this.props;
-    deleteUser(name);
-    // console.log(this.props.name)
-  }
-
+*/
+  // deleteUser() {
+  //   const { onDelete, name } = this.props;
+  //   onDelete(name);
+  //   console.log(this.props.name);
+  // }
+  /*
   <li className="list-group-item">
         {name.capitalize()}
         <button className="btn btn-danger btn-sm float-right">Delete</button>
       </li>
 */
   render() {
-    const { name, desc } = this.props;
+    const { name, desc, onDelete } = this.props;
 
     return (
       <div className="col-lg-4 col-md-4 col-sm-6">
@@ -47,7 +47,12 @@ class UserList extends Component {
               <h5>{name.capitalize()}</h5>
               <p>{desc}</p>
             </div>
-            <button className="btn btn-danger btn-sm btn-custom">Delete</button>
+            <button
+              className="btn btn-danger btn-sm btn-custom"
+              onClick={onDelete}
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>
@@ -57,6 +62,7 @@ class UserList extends Component {
 
 UserList.propTypes = {
   name: PropTypes.string,
-  desc: PropTypes.string
+  desc: PropTypes.string,
+  onDelete: PropTypes.func
 };
 export default UserList;
