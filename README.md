@@ -1,7 +1,7 @@
 
 # CRUD app using React and Bootstrap 4
 
-This CRUD app with webpack 4, bootstrap 4 and latest babel config. This is a very basic responsive CRUD app using React.
+This is a very basic responsive CRUD app using React with webpack 4, bootstrap 4 and latest babel config.
 
 ## Project description
 Used stacks are ```React + webpack 4 +  Bootstrap 4``
