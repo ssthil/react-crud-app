@@ -4,6 +4,8 @@
   "plugins": ["react"],
   "rules": {
     "no-undef": [1],
+    "no-func-assign": "error",
+    "no-useless-return": "error",
     "no-console": 0,
     "quotes": [
       "error",
