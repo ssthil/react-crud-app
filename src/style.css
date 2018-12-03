@@ -104,3 +104,7 @@
   background-color: #227785!important;
   color: #fff;
 }
+
+.content-section {
+  min-height: 120px;
+}
