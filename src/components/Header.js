@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Header = () => (
-  <nav className="navbar navbar-expand-lg navbar-dark bg-dark bg-custom ">
+  <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <div className="container-fluid">
       <span className="navbar-brand mb-0 h1 margin-right-sm">
         User Management App

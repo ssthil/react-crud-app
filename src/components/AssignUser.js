@@ -28,17 +28,17 @@ class AssignUser extends PureComponent {
     const groupName = this.state.group;
     // var assignedObject = {};
 
-    var assignedObject = { userName: [userName], groupName: groupName };
+    var assignedObject = { userName: userName, groupName: groupName };
 
     if (
       this.state.assignedUsers.some(
-        obj => obj.groupName === groupName && obj.userName[0] === userName
+        obj => obj.groupName === groupName && obj.userName === userName
       )
     ) {
       this.setState({ msg: 'user and group combination are already existed' });
       return false;
     } else {
-      assignedObject = { userName: [userName], groupName: groupName };
+      assignedObject = { userName: userName, groupName: groupName };
       this.setState({ msg: '' });
     }
 
@@ -59,6 +59,12 @@ class AssignUser extends PureComponent {
     });
   }
 
+  onDelete(userName) {
+    this.setState({
+      assignedUsers: [...this.state.assignedUsers.filter(item => item.userName !== userName)]
+    });
+  }
+
   render() {
     // console.log({ GROUP: this.state.group, USER: this.state.user });
     // console.log(this.state.assignedUsers);
@@ -71,7 +77,7 @@ class AssignUser extends PureComponent {
             <div className="card">
               <FormHeader
                 displayText="Assign User"
-                className="card-header bg-success"
+                className="card-header bg-custom-orange"
               />
               <div className="card-body">
                 <form onSubmit={this.onSubmit}>
@@ -114,7 +120,7 @@ class AssignUser extends PureComponent {
             </div>
           </div>
           {/** List*/}
-          <div className="col-lg-9 col-md-8 col-sm-12">
+          <div className="col-lg-9 col-md-8 col-sm-12 user-group-pist">
             <div className="card">
               <FormHeader displayText="Goup Lists" className="card-header" />
               {this.state.msg !== '' && (
@@ -122,13 +128,13 @@ class AssignUser extends PureComponent {
               )}
               <div className="card-body">
                 {this.state.assignedUsers.length > 0 ? (
-                  this.state.assignedUsers.map((list, index) => (
+                  this.state.assignedUsers.map((item, index) => (
                     <li key={index} className="list-group-item">
-                      {list.groupName.capitalize()}
+                      {item.groupName.capitalize()}
                       <hr />
                       <div className="badge badge-pill badge-info badge-custom">
-                        {list.userName[0]}
-                        <span>X</span>
+                        {item.userName}
+                        <span onClick={() => this.onDelete(item.userName)}>X</span>
                       </div>
                     </li>
                   ))

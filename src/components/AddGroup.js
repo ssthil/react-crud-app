@@ -28,7 +28,7 @@ class AddGroup extends Component {
         <div className="card">
           <FormHeader
             displayText="Add Goup"
-            className="card-header bg-primary"
+            className="card-header bg-info"
           />
           <div className="card-body">
             <ul className="list-group list-group-flush">

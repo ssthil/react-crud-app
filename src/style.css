@@ -55,7 +55,7 @@
   margin-top: 25px;
 }
 
-.card-header.bg-custom{
+.card-header.bg-custom-blue{
   background: #228598;
 }
 
@@ -84,4 +84,22 @@
   padding: 2px 5px;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
+}
+
+.bg-custom {
+  background-color: #8BC34A!important;
+}
+
+.bg-custom-orange {
+  color: #fff;
+  background-color: #d14b12;
+  border-color: #d14b12;
+}
+
+.user-group-pist .card-header {
+  background: #03c2da;
+}
+.bg-info {
+  background-color: #227785!important;
+  color: #fff;
 }

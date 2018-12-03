@@ -21,19 +21,11 @@ class AddUser extends Component {
     this.nameInput.value = '';
   }
 
-  // handleChange(event) {
-  //   // this.setState({
-  //   //   value: event.target.value
-  //   // });
-
-  //   console.log(this.groupName.value)
-  // }
-
   render() {
     // const { groups } = this.props;
     return (
       <div className="card">
-        <FormHeader className="card-header bg-custom" displayText="Add User" />
+        <FormHeader className="card-header bg-info" displayText="Add User" />
         <div className="card-body">
           <ul className="list-group list-group-flush">
             <form onSubmit={this.onSubmit}>
@@ -52,34 +44,6 @@ class AddUser extends Component {
           </ul>
         </div>
       </div>
-
-      /*<form onSubmit={this.onSubmit}>
-        <h4>Add User</h4>
-        <div className="form-group">
-          <input
-            placeholder="User"
-            ref={nameInput => (this.nameInput = nameInput)}
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <input
-            placeholder="Role"
-            ref={roleInput => (this.roleInput = roleInput)}
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <input
-            placeholder="Group"
-            ref={groupInput => (this.groupInput = groupInput)}
-            className="form-control"
-          />
-        </div>
-        <button className="btn btn-primary">Add User</button>
-        <hr />
-      </form>
-    */
     );
   }
 }

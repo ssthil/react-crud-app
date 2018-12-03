@@ -14,6 +14,7 @@ class Groups extends Component {
     };
 
     this.addGroup = this.addGroup.bind(this);
+    this.deleteGroup = this.deleteGroup.bind(this);
   }
 
   getUsers() {
@@ -34,6 +35,20 @@ class Groups extends Component {
     this.setState({
       groups
     });
+  }
+
+  deleteGroup(name) {
+    const groups = this.getGroups();
+    const filteredGroups = groups.filter(group => {
+      return group.name !== name;
+    });
+
+    localStorage.setItem('groups', JSON.stringify(filteredGroups));
+    this.setState({
+      groups: filteredGroups
+    });
+
+    // console.log(groups);
   }
   /*
   getUsersAndgroup() {
@@ -75,7 +90,7 @@ class Groups extends Component {
               <FormHeader displayText="Goup Lists" className="card-header" />
               {this.state.groups ? (
                 this.state.groups.map((group, index) => (
-                  <GroupList key={index} groupName={group.name} />
+                  <GroupList key={index} groupName={group.name} onDelete={this.deleteGroup}/>
                 ))
               ) : (
                 <div className="alert alert-danger">No Records!</div>

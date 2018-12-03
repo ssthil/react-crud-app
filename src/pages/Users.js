@@ -53,7 +53,7 @@ class Users extends Component {
       users: filteredUsers
     });
 
-    console.log(filteredUsers);
+    // console.log(users);
   }
 
   render() {

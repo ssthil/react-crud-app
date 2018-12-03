@@ -11,6 +11,7 @@ class UserList extends Component {
   //   this.deleteUser = this.deleteUser.bind(this);
   // }
 
+
   /*onUserSubmit(event) {
     event.preventDefault();
     // console.log(this.nameInput.value, this.groupInput.value);
@@ -23,6 +24,11 @@ class UserList extends Component {
   editUser() {
     // console.log("edit");
   }
+  <Button
+            displayText="Delete"
+            className="btn btn-danger btn-sm btn-custom"
+            onClick={onDelete}
+          />
 */
   // deleteUser() {
   //   const { onDelete, name } = this.props;
@@ -49,7 +55,7 @@ class UserList extends Component {
             </div>
             <button
               className="btn btn-danger btn-sm btn-custom"
-              onClick={onDelete}
+              onClick={() => onDelete(name)}
             >
               Delete
             </button>
