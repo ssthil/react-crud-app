@@ -10,7 +10,12 @@ class AssignUser extends PureComponent {
     super(props);
 
     this.state = {
-      assignedUsers: [],
+      assignedUsers: [
+        {
+          group: this.props.groups[0].name,
+          users: [this.props.users[0].name]
+        }
+      ],
       user: this.props.users[0].name,
       group: this.props.groups[0].name,
       msg: ''
@@ -23,28 +28,71 @@ class AssignUser extends PureComponent {
 
   onSubmit(event) {
     event.preventDefault();
-    // const userName = this.state.user;
     const userName = this.state.user;
     const groupName = this.state.group;
-    // var assignedObject = {};
 
-    var assignedObject = { userName: userName, groupName: groupName };
+    const incomingList = {
+      group: groupName,
+      user: userName
+    };
+    // console.log(this.state.assignedUsers);
+    const groupExist = this.state.assignedUsers.some(
+      grp => grp.group === incomingList.group
+    );
+
+    const newList = groupExist
+      ? this.state.assignedUsers.map(grp => {
+          if (grp.group === incomingList.group) {
+            return {
+              ...grp,
+              users: [...grp.users, incomingList.user]
+            };
+          } else {
+            return grp;
+          }
+        })
+      : [...this.state.assignedUsers, {
+          group: incomingList.group,
+          users: [incomingList.user]
+      }];
+
+    this.setState({
+        assignedUsers: newList
+    });
+
+    /*
+    var assignedObject = {
+      groupObj: {
+        name: groupName,
+        userList: []
+      }
+    };
+
+    if (assignedObject.groupObj.userList.indexOf(userName) === -1) {
+      assignedObject.groupObj.userList.push(userName);
+    }
 
     if (
       this.state.assignedUsers.some(
-        obj => obj.groupName === groupName && obj.userName === userName
+        obj =>
+          obj.groupObj.name === groupName &&
+          assignedObject.groupObj.userList.indexOf(userName) !== -1
       )
     ) {
       this.setState({ msg: 'user and group combination are already existed' });
       return false;
     } else {
-      assignedObject = { userName: userName, groupName: groupName };
+      assignedObject.groupObj.name = groupName;
+      if (assignedObject.groupObj.userList.indexOf(userName) === -1) {
+        assignedObject.groupObj.userList.push(userName);
+      }
       this.setState({ msg: '' });
     }
+    // this.setState({
+    //   assignedUsers: [...this.state.assignedUsers, assignedObject]
+    // });
+    */
 
-    this.setState({
-      assignedUsers: [...this.state.assignedUsers, assignedObject]
-    });
   }
 
   handleChangeGroup(event) {
@@ -59,9 +107,22 @@ class AssignUser extends PureComponent {
     });
   }
 
-  onDelete(userName) {
+  onDelete(user) {
+    var users, group;
+    this.state.assignedUsers.forEach(function(grp){
+       users = grp.users;
+       group = grp.group;
+    });
+    // users.filter(user => user !=="us2");
+
+    var toRemove = user;
+    var index = users.indexOf(toRemove);
+    users.splice(index, 1);
+    // console.log(users);
+
     this.setState({
-      assignedUsers: [...this.state.assignedUsers.filter(item => item.userName !== userName)]
+      assignedUsers: [{group: group, users: users}
+      ]
     });
   }
 
@@ -130,12 +191,18 @@ class AssignUser extends PureComponent {
                 {this.state.assignedUsers.length > 0 ? (
                   this.state.assignedUsers.map((item, index) => (
                     <li key={index} className="list-group-item">
-                      {item.groupName.capitalize()}
+                      {item.group.capitalize()}
                       <hr />
-                      <div className="badge badge-pill badge-info badge-custom">
-                        {item.userName}
-                        <span onClick={() => this.onDelete(item.userName)}>X</span>
-                      </div>
+                      {/*console.log(item.groupName.userList)*/}
+                      {item.users.map((user, j) => (
+                        <div className="badge badge-pill badge-info badge-custom" key={j}>
+                          {user}
+                          <span> {/*onClick={() => this.onDelete(user)}>*/}
+                            X
+                          </span>
+                        </div>
+
+                      ))}
                     </li>
                   ))
                 ) : (
