@@ -104,3 +104,36 @@ const SelectorRef = document.getElementById("app");
 
 ReactDOM.render(<App />, SelectorRef);
 ```
+
+## Prettier, husky and eslint
+
+Added Prettier to automatically format all js file and use husky and lint-staged to add a precommit script that runs Prettier and eslint --fix when do **git commit**.
+
+```
+yarn add prettier husky lint-staged --dev
+```
+
+#### update package.json
+
+```
+"scripts": {
+    "eslint:fix": "eslint --fix --ext .js src/",
+    "pretty": "prettier --write --tab-width 2 \"src/**/*.js\""
+  },
+"husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "src/**/*.{js,jsx,md,css}": [
+        "eslint --fix",
+        "git add"
+      ],
+      "ignore": [
+        "**/package-lock.json"
+      ]
+    }
+  }
+  ```
