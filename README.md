@@ -39,10 +39,16 @@ Create config files
 touch webpack.config.js .babelrc README.md .gitignore
 ```
 
-Create `src` directory and `index` files
+Create `src` directory and `index.js` file
 
  ```
  mkdir src && cd $_ && touch index.js index.html
+ ```
+
+ Create `index.html` file in the root
+
+ ```
+ touch index.html
  ```
 
 ### Step 2
