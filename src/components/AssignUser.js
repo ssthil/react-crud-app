@@ -51,13 +51,16 @@ class AssignUser extends PureComponent {
             return grp;
           }
         })
-      : [...this.state.assignedUsers, {
-          group: incomingList.group,
-          users: [incomingList.user]
-      }];
+      : [
+          ...this.state.assignedUsers,
+          {
+            group: incomingList.group,
+            users: [incomingList.user]
+          }
+        ];
 
     this.setState({
-        assignedUsers: newList
+      assignedUsers: newList
     });
 
     /*
@@ -92,7 +95,6 @@ class AssignUser extends PureComponent {
     //   assignedUsers: [...this.state.assignedUsers, assignedObject]
     // });
     */
-
   }
 
   handleChangeGroup(event) {
@@ -109,9 +111,9 @@ class AssignUser extends PureComponent {
 
   onDelete(user) {
     var users, group;
-    this.state.assignedUsers.forEach(function(grp){
-       users = grp.users;
-       group = grp.group;
+    this.state.assignedUsers.forEach(function(grp) {
+      users = grp.users;
+      group = grp.group;
     });
     // users.filter(user => user !=="us2");
 
@@ -121,8 +123,7 @@ class AssignUser extends PureComponent {
     // console.log(users);
 
     this.setState({
-      assignedUsers: [{group: group, users: users}
-      ]
+      assignedUsers: [{ group: group, users: users }]
     });
   }
 
@@ -195,13 +196,16 @@ class AssignUser extends PureComponent {
                       <hr />
                       {/*console.log(item.groupName.userList)*/}
                       {item.users.map((user, j) => (
-                        <div className="badge badge-pill badge-info badge-custom" key={j}>
+                        <div
+                          className="badge badge-pill badge-info badge-custom"
+                          key={j}
+                        >
                           {user}
-                          <span> {/*onClick={() => this.onDelete(user)}>*/}
-                            X
+                          <span>
+                            {' '}
+                            {/*onClick={() => this.onDelete(user)}>*/}X
                           </span>
                         </div>
-
                       ))}
                     </li>
                   ))

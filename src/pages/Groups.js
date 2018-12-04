@@ -90,7 +90,11 @@ class Groups extends Component {
               <FormHeader displayText="Goup Lists" className="card-header" />
               {this.state.groups ? (
                 this.state.groups.map((group, index) => (
-                  <GroupList key={index} groupName={group.name} onDelete={this.deleteGroup}/>
+                  <GroupList
+                    key={index}
+                    groupName={group.name}
+                    onDelete={this.deleteGroup}
+                  />
                 ))
               ) : (
                 <div className="alert alert-danger">No Records!</div>

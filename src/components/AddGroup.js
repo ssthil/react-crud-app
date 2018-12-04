@@ -26,10 +26,7 @@ class AddGroup extends Component {
     return (
       <Fragment>
         <div className="card">
-          <FormHeader
-            displayText="Add Goup"
-            className="card-header bg-info"
-          />
+          <FormHeader displayText="Add Goup" className="card-header bg-info" />
           <div className="card-body">
             <ul className="list-group list-group-flush">
               <form onSubmit={this.onSubmit}>

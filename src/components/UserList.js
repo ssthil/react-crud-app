@@ -11,7 +11,6 @@ class UserList extends Component {
   //   this.deleteUser = this.deleteUser.bind(this);
   // }
 
-
   /*onUserSubmit(event) {
     event.preventDefault();
     // console.log(this.nameInput.value, this.groupInput.value);

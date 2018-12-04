@@ -125,7 +125,10 @@ class App extends Component {
             <span className="navbar-brand mb-0 h1">
               React User Management Application
             </span>
-            <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <div
+              className="collapse navbar-collapse justify-content-end"
+              id="navbarNav"
+            >
               <ul className="navbar-nav">
                 <li className="nav-item active">
                   <a className="nav-link" href="#">

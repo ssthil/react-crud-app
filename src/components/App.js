@@ -10,10 +10,10 @@ const App = () => (
   <Fragment>
     <Header />
     <Switch>
-      <Route exact path="/" component={ Users } />
-      <Route path="/users" component={ Users } />
-      <Route path="/groups" component={ Groups } />
-      <Route path="/assigned_users" component={ GroupUsers } />
+      <Route exact path="/" component={Users} />
+      <Route path="/users" component={Users} />
+      <Route path="/groups" component={Groups} />
+      <Route path="/assigned_users" component={GroupUsers} />
     </Switch>
   </Fragment>
 );
