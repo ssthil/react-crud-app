@@ -4,8 +4,8 @@
 //   filename: "./index.html"
 // });
 
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+// var path = require('path');
+// var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -22,12 +22,12 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: 'babel-loader'
         }
       },
       {
         test:/\.css$/,
-        use:["style-loader", "css-loader"]
+        use:['style-loader', 'css-loader']
       },
       {
         test: /\.js$/,
