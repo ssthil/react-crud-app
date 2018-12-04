@@ -18,7 +18,7 @@ mkdir react-crud-app && cd $_ && yarn init -y
 We need to install webpack as a **dev dependency** and webpack-cli
 
 ```
-yarn add webpack webpack-cli webpack-dev-server
+yarn add webpack webpack-cli webpack-dev-server --dev
 ```
 
 Install react and react-dom as a **dependency**
