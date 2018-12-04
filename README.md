@@ -137,3 +137,12 @@ yarn add prettier husky lint-staged --dev
     }
   }
   ```
+
+### Git commit
+
+```
+git add
+git commit -m ""
+```
+
+then husky will run on the terminal :thumbsup:
