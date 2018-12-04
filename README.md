@@ -119,7 +119,8 @@ yarn add prettier husky lint-staged --dev
 "scripts": {
     "eslint:fix": "eslint --fix --ext .js src/",
     "pretty": "prettier --write --tab-width 2 \"src/**/*.js\""
-  },
+},
+
 "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
