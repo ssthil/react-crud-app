@@ -30,7 +30,7 @@ yarn add react react-dom
 Then install babel as a **dev dependency**
 
 ```
-@babel/core @babel/preset-env @babel/preset-react babel-loader html-webpack-plugin --dev
+yarn add @babel/core @babel/preset-env @babel/preset-react babel-loader html-webpack-plugin --dev
 ```
 
 Create config files
