@@ -31,7 +31,7 @@ class AddUser extends Component {
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <input
-                  placeholder="user name"
+                  placeholder="User name"
                   ref={nameInput => (this.nameInput = nameInput)}
                   className="form-control"
                 />

@@ -71,34 +71,40 @@
 
 /** */
 .badge-custom {
-  color: #fff;
-  background-color: #17a2b8;
-  padding: 5px 2px 5px 12px;
+  color: #23272b;
+  background-color: #edeff7;
+  padding: 8px 8px 8px 12px;
   margin: 0 5px;
+  font-size: 13px;
+  text-transform: capitalize;
+  font-weight: 400;
+  border: 1px solid #c7cad6;
 }
 
 .badge-custom span {
-  margin: 0 0 0 10px;
-  color: red;
-  background: #ffffff;
-  padding: 2px 5px;
+  margin: 0 0 0 5px;
+  color: #F44336;
+  padding: 5px;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   cursor: pointer;
+  text-align: left;
+  font-weight: 500;
 }
 
 .bg-custom {
   background-color: #8BC34A!important;
 }
 
-.bg-custom-orange {
+.bg-custom-header {
   color: #fff;
-  background-color: #d14b12;
-  border-color: #d14b12;
+  background-color: #523688;
+  border-color: #3d3f88;
 }
 
 .user-group-pist .card-header {
-  background: #03c2da;
+  background: #04aec3;
+  color: #fff;
 }
 .bg-info {
   background-color: #227785!important;
@@ -107,4 +113,8 @@
 
 .content-section {
   min-height: 120px;
+}
+
+.swal-footer {
+  text-align: center;
 }

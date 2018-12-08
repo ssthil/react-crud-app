@@ -4,21 +4,17 @@ import PropTypes from 'prop-types';
 /** local component */
 import Button from '../components/sharedComponents/Button';
 import FormHeader from '../components/sharedComponents/FormHeader';
+/** utils */
+import { avoidDuplicateEntry } from '../utils';
 
 class AssignUser extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      assignedUsers: [
-        {
-          group: this.props.groups[0].name,
-          users: [this.props.users[0].name]
-        }
-      ],
+      assignedUsers: JSON.parse(localStorage.getItem('assignedUsers')),
       user: this.props.users[0].name,
-      group: this.props.groups[0].name,
-      msg: ''
+      group: this.props.groups[0].name
     };
 
     this.handleChangeGroup = this.handleChangeGroup.bind(this);
@@ -36,16 +32,20 @@ class AssignUser extends PureComponent {
       user: userName
     };
     // console.log(this.state.assignedUsers);
-    const groupExist = this.state.assignedUsers.some(
-      grp => grp.group === incomingList.group
-    );
 
-    const newList = groupExist
+  const checkGroupExist = this.state.assignedUsers.some(
+    grp => grp.group === incomingList.group
+  );
+
+
+    // let groupExist = ;
+
+    const newList = checkGroupExist
       ? this.state.assignedUsers.map(grp => {
           if (grp.group === incomingList.group) {
             return {
               ...grp,
-              users: [...grp.users, incomingList.user]
+              users: avoidDuplicateEntry(grp.users, incomingList.user)
             };
           } else {
             return grp;
@@ -59,6 +59,7 @@ class AssignUser extends PureComponent {
           }
         ];
 
+    localStorage.setItem('assignedUsers', JSON.stringify(newList));
     this.setState({
       assignedUsers: newList
     });
@@ -132,6 +133,7 @@ class AssignUser extends PureComponent {
     // console.log(this.state.assignedUsers);
     // console.log(this.state.assignedUsers);
     const { users, groups } = this.props;
+
     return (
       <div className="container-fluid">
         <div className="row">
@@ -139,7 +141,7 @@ class AssignUser extends PureComponent {
             <div className="card">
               <FormHeader
                 displayText="Assign User"
-                className="card-header bg-custom-orange"
+                className="card-header bg-custom-header"
               />
               <div className="card-body">
                 <form onSubmit={this.onSubmit}>
@@ -185,9 +187,6 @@ class AssignUser extends PureComponent {
           <div className="col-lg-9 col-md-8 col-sm-12 user-group-pist">
             <div className="card">
               <FormHeader displayText="Goup Lists" className="card-header" />
-              {this.state.msg !== '' && (
-                <div className="alert alert-warning">{this.state.msg}</div>
-              )}
               <div className="card-body">
                 {this.state.assignedUsers.length > 0 ? (
                   this.state.assignedUsers.map((item, index) => (
@@ -195,10 +194,10 @@ class AssignUser extends PureComponent {
                       {item.group.capitalize()}
                       <hr />
                       {/*console.log(item.groupName.userList)*/}
-                      {item.users.map((user, j) => (
+                      {item.users.map((user, ind) => (
                         <div
                           className="badge badge-pill badge-info badge-custom"
-                          key={j}
+                          key={ind}
                         >
                           {user}
                           <span>

@@ -32,7 +32,7 @@ class AddGroup extends Component {
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
-                    placeholder="group name"
+                    placeholder="Group name"
                     ref={groupInput => (this.groupInput = groupInput)}
                     className="form-control"
                   />

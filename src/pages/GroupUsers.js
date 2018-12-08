@@ -18,13 +18,7 @@ class AssignUsers extends Component {
 
     this.state = {
       users: JSON.parse(localStorage.getItem('users')),
-      groups: JSON.parse(localStorage.getItem('groups')),
-      assignedUsers: [
-        {
-          userName: '',
-          groupName: ''
-        }
-      ]
+      groups: JSON.parse(localStorage.getItem('groups'))
     };
   }
 
