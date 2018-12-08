@@ -12,7 +12,7 @@ class AssignUser extends PureComponent {
     super(props);
 
     this.state = {
-      assignedUsers: JSON.parse(localStorage.getItem('assignedUsers')),
+      assignedUsers: JSON.parse(localStorage.getItem('assignedUsers')) || [],
       user: this.props.users[0].name,
       group: this.props.groups[0].name
     };
