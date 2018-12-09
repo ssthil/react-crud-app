@@ -5,18 +5,67 @@ import FormHeader from '../components/sharedComponents/FormHeader';
 import UserList from '../components/UserList';
 import AddUser from '../components/AddUser';
 
+import firebase from '../components/Firebase';
+
 class Users extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users: JSON.parse(localStorage.getItem('users')),
+      // users: JSON.parse(localStorage.getItem('users')),
       groups: JSON.parse(localStorage.getItem('groups')),
       desc:
-        'Lorem ipsum dolor sit amet, an modo deserunt per, ut vitae urbanitas consectetuer sed'
+        'Lorem ipsum dolor sit amet, an modo deserunt per, ut vitae urbanitas consectetuer sed',
+      username: '',
+      users: []
     };
 
-    this.addUser = this.addUser.bind(this);
-    this.deleteUser = this.deleteUser.bind(this);
+    // this.addUser = this.addUser.bind(this);
+    // this.deleteUser = this.deleteUser.bind(this);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const itemsRef = firebase.database().ref('users');
+    const item = {
+      name: this.state.username,
+      desc: this.state.desc
+    };
+    itemsRef.push(item);
+    this.setState({
+      username: ''
+    });
+  }
+
+  removeUser(userId) {
+    const itemRef = firebase.database().ref(`/users/${userId}`);
+    itemRef.remove();
+  }
+
+  componentDidMount() {
+    const itemsRef = firebase.database().ref('users');
+    itemsRef.on('value', snapshot => {
+      let users = snapshot.val();
+      let newState = [];
+      for (let user in users) {
+        newState.push({
+          id: user,
+          desc: this.state.desc,
+          name: users[user].name
+        });
+      }
+      this.setState({
+        users: newState
+      });
+    });
   }
 
   getUsers() {
@@ -27,6 +76,7 @@ class Users extends Component {
   }
 
   /** add user */
+  /*
   addUser(name, group_id) {
     const users = this.getUsers();
 
@@ -56,30 +106,32 @@ class Users extends Component {
 
     // console.log(users);
   }
-
+  */
   render() {
-    // const { users, groups } = this.state;
-    // const { name, groups } = this.props;
-
+    const { users } = this.state;
+    // const { name } = this.props;
     return (
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-3 col-md-4 col-sm-12">
-            <AddUser addUser={this.addUser} />
+            <AddUser
+              name="username"
+              addUser={this.handleSubmit}
+              onChange={this.handleChange}
+              value={this.state.username}
+            />
           </div>
           <div className="col-lg-9 col-md-8 col-sm-12">
             <div className="card">
               <FormHeader displayText="User Lists" className="card-header" />
               <div className="row user-list">
-                {/*<div className="card">
-                  <div className="card-header">User Lists</div> */}
-                {this.state.users.length > 0 ? (
-                  this.state.users.map(user => (
+                {users.length > 0 ? (
+                  users.map(user => (
                     <UserList
                       key={user.id}
                       name={user.name}
                       desc={user.desc}
-                      onDelete={this.deleteUser}
+                      onDelete={() => this.removeUser(user.id)}
                     />
                   ))
                 ) : (

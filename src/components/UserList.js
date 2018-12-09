@@ -54,7 +54,7 @@ class UserList extends Component {
             </div>
             <button
               className="btn btn-danger btn-sm btn-custom"
-              onClick={() => onDelete(name)}
+              onClick={() => onDelete()}
             >
               Delete
             </button>

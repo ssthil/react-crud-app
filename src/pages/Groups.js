@@ -47,8 +47,6 @@ class Groups extends Component {
     this.setState({
       groups: filteredGroups
     });
-
-    // console.log(groups);
   }
   /*
   getUsersAndgroup() {

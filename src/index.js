@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
 /** local component */
 import App from './components/App';
+// import Firebase, { FirebaseContext } from './components/Firebase';
 /** css */
 import './style.css';
 
@@ -16,7 +17,7 @@ localStorage.setItem('groups', JSON.stringify(groups));
 
 ReactDOM.render(
   <HashRouter>
-    <App />
+      <App />
   </HashRouter>,
   document.getElementById('app')
 );

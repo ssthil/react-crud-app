@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 
 /** local component */
 import Button from '../components/sharedComponents/Button';
@@ -12,17 +13,31 @@ class AddUser extends Component {
     // this.handleChange = this.handleChange.bind(this);
   }
 
+  // onSubmit(event) {
+  //   event.preventDefault();
+  //   // console.log(this.nameInput.value, this.groupName.value);
+  //   if (this.nameInput.value !== '') {
+  //     this.props.addUser(this.nameInput.value);
+  //   }
+  //   this.nameInput.value = '';
+  // }
+
   onSubmit(event) {
     event.preventDefault();
-    // console.log(this.nameInput.value, this.groupName.value);
-    if (this.nameInput.value !== '') {
-      this.props.addUser(this.nameInput.value);
+    if (this.props.value !== '') {
+      this.props.addUser(event);
+    } else {
+      swal({
+        text:'Please enter user name',
+        icon: 'warning',
+        button: 'Try again',
+        dangerMode: true
+      });
     }
-    this.nameInput.value = '';
   }
 
   render() {
-    // const { groups } = this.props;
+    const { onChange, value, name } = this.props;
     return (
       <div className="card">
         <FormHeader className="card-header bg-info" displayText="Add User" />
@@ -31,9 +46,12 @@ class AddUser extends Component {
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <input
-                  placeholder="User name"
-                  ref={nameInput => (this.nameInput = nameInput)}
+                  type="text"
                   className="form-control"
+                  name={name}
+                  placeholder="User name"
+                  onChange={onChange}
+                  value={value}
                 />
               </div>
               <Button
@@ -49,8 +67,10 @@ class AddUser extends Component {
 }
 
 AddUser.propTypes = {
+  onChange: PropTypes.func,
+  value: PropTypes.string,
   addUser: PropTypes.func,
-  groups: PropTypes.array
+  name: PropTypes.string
 };
 
 export default AddUser;

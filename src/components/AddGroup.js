@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 /** local component */
 import Button from '../components/sharedComponents/Button';
 import FormHeader from '../components/sharedComponents/FormHeader';
@@ -12,11 +13,15 @@ class AddGroup extends Component {
 
   onSubmit(event) {
     event.preventDefault();
-    if (this.groupInput.value === '') {
-      // console.log('Please ender group name');
-    } else {
-      // console.log(this.groupInput.value);
+    if (this.groupInput.value !== '') {
       this.props.addGroup(this.groupInput.value);
+    } else {
+      swal({
+        text:'Please enter group name',
+        icon: 'warning',
+        button: 'Try again',
+        dangerMode: true
+      });
     }
     this.groupInput.value = '';
   }
