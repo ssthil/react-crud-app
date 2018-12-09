@@ -88,7 +88,7 @@ class Groups extends Component {
           <div className="col-lg-9 col-md-8 col-sm-12">
             <div className="card">
               <FormHeader displayText="Goup Lists" className="card-header" />
-              {this.state.groups ? (
+              {this.state.groups.length > 0 ? (
                 this.state.groups.map((group, index) => (
                   <GroupList
                     key={index}
@@ -97,7 +97,9 @@ class Groups extends Component {
                   />
                 ))
               ) : (
-                <div className="alert alert-danger">No Records!</div>
+                <div className="text text-danger no-records">
+                  Group records are empty!
+                </div>
               )}
             </div>
           </div>

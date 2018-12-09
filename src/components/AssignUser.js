@@ -7,14 +7,52 @@ import FormHeader from '../components/sharedComponents/FormHeader';
 /** utils */
 import { avoidDuplicateEntry } from '../utils';
 
+/** <select> option for no records</select> */
+const SelectOptionEmpty = props => {
+  const { name, optionValue } = props;
+  return (
+    <select disabled className="form-control" name={name}>
+      <option>{optionValue}</option>
+    </select>
+  );
+};
+
+const SelectOption = props => {
+  const { name, value, onChange, groups } = props;
+  const optionText = () => {
+    return(
+      groups.map((group, index) => (
+        <option value={group.name} key={index}>
+          {group.name.capitalize()}
+        </option>
+      ))
+    );
+  };
+  return (
+    <select
+      className="form-control"
+      name={name}
+      value={value}
+      onChange={onChange}
+    >
+      {optionText()}
+    </select>
+  );
+};
+
+const MessageBox = () => (
+  <div className="alert alert-info">Yet to assign user to the group!</div>
+);
+
 class AssignUser extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       assignedUsers: JSON.parse(localStorage.getItem('assignedUsers')) || [],
-      user: this.props.users[0].name,
-      group: this.props.groups[0].name
+      user: this.props.users.length > 0 ? this.props.users[0].name : 'No user',
+      group:
+        this.props.groups.length > 0 ? this.props.groups[0].name : 'No group'
     };
 
     this.handleChangeGroup = this.handleChangeGroup.bind(this);
@@ -33,10 +71,9 @@ class AssignUser extends PureComponent {
     };
     // console.log(this.state.assignedUsers);
 
-  const checkGroupExist = this.state.assignedUsers.some(
-    grp => grp.group === incomingList.group
-  );
-
+    const checkGroupExist = this.state.assignedUsers.some(
+      grp => grp.group === incomingList.group
+    );
 
     // let groupExist = ;
 
@@ -63,39 +100,6 @@ class AssignUser extends PureComponent {
     this.setState({
       assignedUsers: newList
     });
-
-    /*
-    var assignedObject = {
-      groupObj: {
-        name: groupName,
-        userList: []
-      }
-    };
-
-    if (assignedObject.groupObj.userList.indexOf(userName) === -1) {
-      assignedObject.groupObj.userList.push(userName);
-    }
-
-    if (
-      this.state.assignedUsers.some(
-        obj =>
-          obj.groupObj.name === groupName &&
-          assignedObject.groupObj.userList.indexOf(userName) !== -1
-      )
-    ) {
-      this.setState({ msg: 'user and group combination are already existed' });
-      return false;
-    } else {
-      assignedObject.groupObj.name = groupName;
-      if (assignedObject.groupObj.userList.indexOf(userName) === -1) {
-        assignedObject.groupObj.userList.push(userName);
-      }
-      this.setState({ msg: '' });
-    }
-    // this.setState({
-    //   assignedUsers: [...this.state.assignedUsers, assignedObject]
-    // });
-    */
   }
 
   handleChangeGroup(event) {
@@ -130,9 +134,23 @@ class AssignUser extends PureComponent {
 
   render() {
     // console.log({ GROUP: this.state.group, USER: this.state.user });
-    // console.log(this.state.assignedUsers);
-    // console.log(this.state.assignedUsers);
     const { users, groups } = this.props;
+    const { assignedUsers } = this.state;
+
+    const GroupUserList = () =>
+      assignedUsers.map((item, index) => (
+        <li key={index} className="list-group-item">
+          {item.group.capitalize()}
+          <hr />
+          {/*console.log(item.groupName.userList)*/}
+          {item.users.map((user, ind) => (
+            <div className="badge badge-pill badge-info badge-custom" key={ind}>
+              {user}
+              <span onClick={() => this.onDelete(user)}>X</span>
+            </div>
+          ))}
+        </li>
+      ));
 
     return (
       <div className="container-fluid">
@@ -147,72 +165,64 @@ class AssignUser extends PureComponent {
                 <form onSubmit={this.onSubmit}>
                   <div className="form-group">
                     <label>Group</label>
-                    <select
-                      className="form-control"
-                      name="groupName"
-                      value={this.state.group}
-                      onChange={this.handleChangeGroup}
-                    >
-                      {groups.map((group, index) => (
-                        <option value={group.name} key={index}>
-                          {group.name.capitalize()}
-                        </option>
-                      ))}
-                    </select>
+                    {groups.length === 0 ? (
+                      <SelectOptionEmpty
+                        optionValue="No groups"
+                        name="groupName"
+                      />
+                    ) : (
+                      <SelectOption
+                        name="groupName"
+                        value={this.state.group}
+                        onChange={this.handleChangeGroup}
+                        {...this.props}
+                      />
+                    )}
                   </div>
                   <div className="form-group">
                     <label>User</label>
-                    <select
-                      className="form-control"
-                      name="userName"
-                      value={this.state.user}
-                      onChange={this.handleChangeUser}
-                    >
-                      {users.map(user => (
-                        <option value={user.name} key={user.id}>
-                          {user.name.capitalize()}
-                        </option>
-                      ))}
-                    </select>
+                    {users.length === 0 ? (
+                      <SelectOptionEmpty
+                        optionValue="No users"
+                        name="userName"
+                      />
+                    ) : (
+                      <select
+                        className="form-control"
+                        name="userName"
+                        value={this.state.user}
+                        onChange={this.handleChangeUser}
+                      >
+                        {users.map(user => (
+                          <option value={user.name} key={user.id}>
+                            {user.name.capitalize()}
+                          </option>
+                        ))}
+                      </select>
+                    )}
                   </div>
-                  <Button
-                    displayText="Assign User"
-                    className="btn btn-success btn-sm"
-                  />
+                  {groups.length === 0 || users.length === 0 ? (
+                    <Button
+                      displayText="Assign User"
+                      className="btn btn-warning btn-sm"
+                      disabled
+                    />
+                  ) : (
+                    <Button
+                      displayText="Assign User"
+                      className="btn btn-warning btn-sm"
+                    />
+                  )}
                 </form>
               </div>
             </div>
           </div>
           {/** List*/}
-          <div className="col-lg-9 col-md-8 col-sm-12 user-group-pist">
+          <div className="col-lg-9 col-md-8 col-sm-12 user-group-list">
             <div className="card">
               <FormHeader displayText="Goup Lists" className="card-header" />
               <div className="card-body">
-                {this.state.assignedUsers.length > 0 ? (
-                  this.state.assignedUsers.map((item, index) => (
-                    <li key={index} className="list-group-item">
-                      {item.group.capitalize()}
-                      <hr />
-                      {/*console.log(item.groupName.userList)*/}
-                      {item.users.map((user, ind) => (
-                        <div
-                          className="badge badge-pill badge-info badge-custom"
-                          key={ind}
-                        >
-                          {user}
-                          <span>
-                            {' '}
-                            {/*onClick={() => this.onDelete(user)}>*/}X
-                          </span>
-                        </div>
-                      ))}
-                    </li>
-                  ))
-                ) : (
-                  <div className="alert alert-info">
-                    Yet to assign user to the group!
-                  </div>
-                )}
+                {assignedUsers.length > 0 ? <GroupUserList /> : <MessageBox />}
               </div>
             </div>
           </div>
@@ -226,6 +236,18 @@ AssignUser.propTypes = {
   users: PropTypes.array,
   groups: PropTypes.array,
   handleChangeGroup: PropTypes.func
+};
+
+SelectOptionEmpty.propTypes = {
+  name: PropTypes.string,
+  optionValue: PropTypes.string
+};
+
+SelectOption.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  groups: PropTypes.array
 };
 
 export default AssignUser;

@@ -16,6 +16,11 @@
     margin: 0 0 5px 0;
 }
 
+.user-list {
+  margin-right: 0;
+  margin-left: 0;
+}
+
 .user-list .card-body {
     padding: .75rem;
     /* position: relative; */
@@ -52,7 +57,7 @@
 }
 
 .card {
-  margin-top: 25px;
+  margin: 25px 0;
 }
 
 .card-header.bg-custom-blue{
@@ -102,7 +107,7 @@
   border-color: #3d3f88;
 }
 
-.user-group-pist .card-header {
+.user-group-list .card-header {
   background: #04aec3;
   color: #fff;
 }
@@ -117,4 +122,8 @@
 
 .swal-footer {
   text-align: center;
+}
+
+.no-records {
+    padding: 20px;
 }
