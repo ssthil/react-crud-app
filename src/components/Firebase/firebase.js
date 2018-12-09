@@ -12,7 +12,7 @@ const config = {
 };
 */
 var config = {
-  apiKey: 'AIzaSyB3Ia1r28X_zljNEpgnN7pWRttyboY3DuE',
+  apiKey: '',
   authDomain: 'react-crud-app-34314.firebaseapp.com',
   databaseURL: 'https://react-crud-app-34314.firebaseio.com',
   projectId: 'react-crud-app-34314',
