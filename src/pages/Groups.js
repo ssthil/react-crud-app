@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 /** local components */
-import GroupList from '../components/GroupList';
-import AddGroup from '../components/AddGroup';
+import GroupList from '../components/Group/GroupList';
+import AddGroup from '../components/Group/AddGroup';
 import FormHeader from '../components/sharedComponents/FormHeader';
 
 class Groups extends Component {

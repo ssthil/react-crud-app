@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 /** local components */
 import FormHeader from '../components/sharedComponents/FormHeader';
-import UserList from '../components/UserList';
-import AddUser from '../components/AddUser';
+import UserList from '../components/User/UserList';
+import AddUser from '../components/User/AddUser';
 
 import firebase from '../components/Firebase';
 

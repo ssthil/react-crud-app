@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 
 /** local component */
-import Button from '../components/sharedComponents/Button';
-import FormHeader from '../components/sharedComponents/FormHeader';
+import Button from '../sharedComponents/Button';
+import FormHeader from '../sharedComponents/FormHeader';
 
 class AddUser extends Component {
   constructor(props) {
