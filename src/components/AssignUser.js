@@ -146,7 +146,7 @@ class AssignUser extends PureComponent {
           {item.users.map((user, ind) => (
             <div className="badge badge-pill badge-info badge-custom" key={ind}>
               {user}
-              <span onClick={() => this.onDelete(user)}>X</span>
+              <span>X</span>
             </div>
           ))}
         </li>
