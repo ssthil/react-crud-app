@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 
 /** local component */
-import Button from '../components/sharedComponents/Button';
-import FormHeader from '../components/sharedComponents/FormHeader';
+import Button from '../sharedComponents/Button';
+import FormHeader from '../sharedComponents/FormHeader';
 
 class AddUser extends Component {
   constructor(props) {
@@ -17,6 +18,13 @@ class AddUser extends Component {
     // console.log(this.nameInput.value, this.groupName.value);
     if (this.nameInput.value !== '') {
       this.props.addUser(this.nameInput.value);
+    } else {
+      swal({
+        text:'Please enter user name',
+        icon: 'warning',
+        button: 'Try again',
+        dangerMode: true
+      });
     }
     this.nameInput.value = '';
   }
