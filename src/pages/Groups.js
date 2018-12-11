@@ -47,37 +47,7 @@ class Groups extends Component {
     this.setState({
       groups: filteredGroups
     });
-
-    // console.log(groups);
   }
-  /*
-  getUsersAndgroup() {
-    const users = this.getUsers();
-    var userGroup = [],
-      userName = [];
-    var groupName = null;
-
-    users.forEach(function(user) {
-      function checkGroupName(val) {
-        if (val) {
-          return user.group_id == val.group_id;
-        }
-      }
-      var groupIndex = groups.findIndex(checkGroupName);
-
-      groupName = groups[groupIndex].name;
-      userName.push(user.name);
-      userGroup.push({
-        groupName: groupName,
-        userName: userName
-      });
-    });
-    localStorage.setItem('userGroup', JSON.stringify(userGroup));
-    this.setState({
-      userGroup
-    });
-  }
-*/
   render() {
     return (
       <div className="container-fluid">
@@ -93,7 +63,7 @@ class Groups extends Component {
                   <GroupList
                     key={index}
                     groupName={group.name}
-                    onDelete={this.deleteGroup}
+                    onDelete={() => this.deleteGroup(group.name)}
                   />
                 ))
               ) : (

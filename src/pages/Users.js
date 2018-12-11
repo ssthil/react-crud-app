@@ -43,7 +43,7 @@ class Users extends Component {
     });
   }
 
-  deleteUser(name) {
+  deleteUser = (name) =>{
     const users = this.getUsers();
     const filteredUsers = users.filter(user => {
       return user.name !== name;
@@ -53,13 +53,9 @@ class Users extends Component {
     this.setState({
       users: filteredUsers
     });
-
-    // console.log(users);
   }
 
   render() {
-    // const { users, groups } = this.state;
-    // const { name, groups } = this.props;
 
     return (
       <div className="container-fluid">
@@ -71,15 +67,13 @@ class Users extends Component {
             <div className="card">
               <FormHeader displayText="User Lists" className="card-header" />
               <div className="row user-list">
-                {/*<div className="card">
-                  <div className="card-header">User Lists</div> */}
                 {this.state.users.length > 0 ? (
                   this.state.users.map(user => (
                     <UserList
                       key={user.id}
                       name={user.name}
                       desc={user.desc}
-                      onDelete={this.deleteUser}
+                      onDelete={() => this.deleteUser(user.name)}
                     />
                   ))
                 ) : (
